@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV-Builder</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://kit.fontawesome.com/f9a3733d1a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="box-border">
+      <div class="settings">
+          <h1>CV Builder</h1>
+          <div>
+          <button id="print">Print</button>
+          <button id="download">Download PDF</button>
+          </div>
+      </div>
+      <div class="box active">
+        <form class="personal-form">
+          <div class="header1">
+            <h2 class="title">Personal Details</h2>
+            <i class="fa-solid fa-chevron-up down" style="color: white;"></i>
+          </div>
+          <div class="input-div1">
+            <label for="fname">Full name:</label>
+            <input placeholder="Enter Full Name" type="text" id="fname" name="fname" value="Otto Robinson">
+          </div>
+          <div class="input-div1">
+            <label for="email">Email:</label>
+            <input placeholder="Enter Email" type="email" id="email" name="email" value="example@gmail.com">
+          </div>
+          <div class="input-div1">
+            <label for="tel">Phone number:</label>
+            <input placeholder="Enter Your Number" type="tel" id="tel" name="tel" value="+44 3560 5566 5566">
+          </div>
+          <div class="input-div1">
+            <label for="address">Address:</label>
+            <input placeholder="Enter Your Address" type="text" id="address" name="address" value="London, UK">
+          </div>
+      
+        </form>
+      </div>
+      <div class="box">
+          <form class="education-form">
+          <div class="header1">
+            <h2 class="title">Education</h2>
+            <i class="fa-solid fa-chevron-up up" style="color: white;" ></i>
+          </div>
+          <div class="input-container">
+            <div class="input">
+              <div>
+                <h3>London City University</h3>
+                <p>08/2020 - Present</p>
+              </div>
+              <div class="btn">
+                <i class="fa-solid fa-pen-to-square" style="color: white;"></i>
+                <i class="fa-solid fa-trash-can" style="color: #d60101;"></i>
+              </div>
+            </div>
+            <div class="input">
+              <div>
+                <h3>London City University</h3>
+                <p>08/2020 - Present</p>
+              </div>
+              <div class="btn">
+                <i class="fa-solid fa-pen-to-square" style="color: white;"></i>
+                <i class="fa-solid fa-trash-can" style="color: #d60101;"></i>
+              </div>
+            </div>
+          </div>
+          <div class="new-div">
+            <button id="new">New</button>
+          </div>
+          <div class="input-div">
+            <label for="sname">School:</label>
+            <input placeholder="Enter School" type="text" id="sname" name="sname">
+          </div>
+          <div class="input-div">
+            <label for="degree">Degree:</label>
+            <input placeholder="Enter Degree/ Field Of Study" type="text" id="degree" name="degree">
+          </div>
+          <div class="date-div">
+            <div class="input-div">
+              <label for="sdate">Start Date:</label>
+              <input type="date" id="sdate" name="sdate">
+            </div>
+            <div class="input-div">
+              <label for="edate">End Date:</label>
+              <input type="date" id="edate" name="edate">
+            </div>
+          </div>
+          <div class="input-div">
+            <label for="slocation">Location:</label>
+            <input placeholder="Enter School Location" type="text" id="slocation" name="slocation">
+          </div>
+          <div class="buttons">
+            <button class="cancel">Cancel</button>
+            <button class="save" type="submit">Save</button>
+            
+          </div>
+          </form>
+      </div>
+      <div class="box">
+          <form class="experience-form">
+            <div class="header1">
+              <h2 class="title">Experience</h2>
+              <i class="fa-solid fa-chevron-up up" style="color: white;" ></i>
+            </div>
+            <div class="input">
+              <div>
+                <h3>Microsoft</h3>
+                <p>08/2020 - Present</p>
+              </div>
+              <div class="btn">
+                <i class="fa-solid fa-pen-to-square" style="color: white;"></i>
+                <i class="fa-solid fa-trash-can" style="color: #d60101;"></i>
+              </div>
+            </div>
+            <div class="new-div">
+              <button id="new">New</button>
+            </div>
+            <div class="input-div">
+              <label for="cname">Company Name:</label>
+              <input placeholder="Enter Company Name/ Other" type="text" id="cname" name="cname">
+            </div>
+            <div class="input-div">
+              <label for="position">Position Title:</label>
+              <input placeholder="Enter Position" type="text" id="position" name="position">
+            </div>
+            <div class="date-div">
+              <div class="input-div">
+                <label for="sdate">Start Date:</label>
+                <input type="date" id="sdate" name="sdate">
+              </div>
+              <div class="input-div">
+                <label for="edate">End Date:</label>
+                <input type="date" id="edate" name="edate">
+              </div>
+            </div>
+            <div class="input-div">
+              <label for="wlocation">Location:</label>
+              <input placeholder="Enter Location" type="text" id="wlocation" name="wlocation">
+            </div>
+            <div class="textarea-div">
+              <label for="Description">Description:</label>
+              <textarea placeholder="Enter Description" type="text" id="description" name="description" cols="30" rows="10"></textarea>
+            </div>
+            <div class="buttons">
+              <button class="cancel">Cancel</button>
+              <button class="save" type="submit">Save</button>
+            </div>
+          </form>
+        </div>
+    </div>
+    <div class="page-div">
+      <div class="page" size="A4">
+        <header>
+          <div class="left-header">
+            <img src="sample-avatar.jpg" alt="Avatar">
+            <h2>Brandon Parker</h2>
+          </div>
+          <div class="right-header">
+            <h3>example@gmail.com</h3>
+            <h3>+44 3560 5566 5566</h3>
+            <h3>London, UK</h3>
+          </div>
+        </header>
+        <div class="education">
+          <div class="education-div">
+            <div class="cv-title">
+              <h1>Education</h1>
+            </div>
+            <div class="edu-container">
+              <div class="school">
+                <h4>London City University</h4>
+                <p>Bachelor In computer Science</p>
+              </div>
+              <div class="school-date">
+                <h3>08/2020 - Present</h3>
+                <h3>London, UK</h3>
+              </div>
+            </div>
+          </div>
+      
+        </div>
+        <div class="experience">
+          <div class="education-div">
+            <div class="cv-title">
+              <h1>Experience</h1>
+            </div>
+            <div class="edu-container">
+              <div class="school">
+                <h4>Microsoft</h4>
+                <p>Front End Developer</p>
+                <p class="info">My position involved crafting dynamic and aesthetically captivating user interfaces that effectively engaged our diverse clientele, contributing to Microsoft's advancement in the ever-evolving digital realm.</p>
+              </div>
+              <div class="school-date">
+                <h3>08/2020 - Present</h3>
+                <h3>London, UK</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="javascript.js"></script>
+</body>
+</html>
