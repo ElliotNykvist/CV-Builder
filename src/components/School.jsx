@@ -1,5 +1,5 @@
 function School() {
-  <div className="box">
+  return <div className="box">
   <form className="education-form">
     <div className="header1">
       <h2 className="title">Education</h2>

@@ -3,6 +3,7 @@ import './App.css';
 import Settings from './components/Settings';
 import Personal from './components/Personal';
 import School from './components/Personal';
+import Experience from './components/Experience';
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
         <Settings />
         <Personal/>
         <School/>
+        <Experience/>
       </div>
     </>
   )
