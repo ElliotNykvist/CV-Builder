@@ -2,6 +2,7 @@
 import './App.css';
 import Settings from './components/Settings';
 import Personal from './components/Personal';
+import School from './components/Personal';
 
 function App() {
 
@@ -10,8 +11,7 @@ function App() {
       <div className="container">
         <Settings />
         <Personal/>
-
-      
+        <School/>
       </div>
     </>
   )
