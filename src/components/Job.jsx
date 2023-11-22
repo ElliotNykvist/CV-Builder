@@ -13,7 +13,6 @@ function Job() {
           user interfaces that effectively engaged our diverse clientele,
           contributing to Microsoft&apos;s advancement in the ever-evolving digital
           realm.
-      
         </p>
       </div>
       <div className="school-date">

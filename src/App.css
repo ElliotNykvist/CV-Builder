@@ -409,3 +409,15 @@ button:active {
   padding-top: 60px;
   padding-bottom: 60px;
 }
+
+.add-img {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  
+}
+
+.active .add-img {
+  display: flex;
+}

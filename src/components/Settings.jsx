@@ -5,7 +5,7 @@ function Settings() {
     <button id="print">Print</button>
     <button id="download">Download PDF</button>
   </div>
-</div>;
+</div>
 }
 
 export default Settings;

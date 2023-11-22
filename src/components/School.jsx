@@ -1,9 +1,21 @@
+import { useState } from 'react';
+
 function School() {
-  return <div className="box">
+
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleBox = () => {
+    setIsActive(!isActive);
+  };
+
+
+  return <div className={`box ${isActive ? 'active' : ''} `}>
   <form className="education-form">
     <div className="header1">
       <h2 className="title">Education</h2>
-      <i className="fa-solid fa-chevron-up up" style={{ color: "white" }} />
+      <i className="fa-solid fa-chevron-up up" 
+         style={{ color: "white" }} 
+         onClick={toggleBox} />
     </div>
     <div className="input-container">
       <div className="input">

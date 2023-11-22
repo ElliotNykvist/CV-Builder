@@ -1,9 +1,20 @@
+import { useState } from 'react';
+
 function Personal() {
-  return <div className="box active">
+
+  const [isActive, setIsActive] = useState(true);
+
+  const toggleBox = () => {
+    setIsActive(!isActive);
+  };
+
+  return <div className={`box ${isActive ? 'active' : ''}`}>
   <form className="personal-form">
     <div className="header1">
       <h2 className="title">Personal Details</h2>
-      <i className="fa-solid fa-chevron-up down" style={{ color: "white" }} />
+      <i className="fa-solid fa-chevron-up down" 
+         style={{ color: "white" }} 
+         onClick={toggleBox}/>
     </div>
     <div className="input-div1">
       <label htmlFor="fname">Full name:</label>
@@ -45,6 +56,7 @@ function Personal() {
         defaultValue="London, UK"
       />
     </div>
+    <button className="add-img">Add Img</button>
   </form>
 </div>
 

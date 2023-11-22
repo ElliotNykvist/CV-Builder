@@ -1,9 +1,20 @@
+import { useState } from 'react';
+
 function Experience() {
-  return <div className="box">
+
+  const [isActive, setIsActive] = useState(false);
+
+  const toggleBox = () => {
+    setIsActive(!isActive);
+  };
+
+  return <div className={`box ${isActive ? 'active' : ''}`}>
   <form className="experience-form">
     <div className="header1">
       <h2 className="title">Experience</h2>
-      <i className="fa-solid fa-chevron-up up" style={{ color: "white" }} />
+      <i className="fa-solid fa-chevron-up up"
+         style={{ color: "white" }}
+         onClick={toggleBox}/>
     </div>
     <div className="input">
       <div>

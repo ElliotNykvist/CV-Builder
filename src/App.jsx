@@ -8,7 +8,6 @@ import Education from './components/Education';
 import Job from './components/Job'
 
 function App() {
-
   return (
     <>
       <div className="container">

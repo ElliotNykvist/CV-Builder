@@ -1,3 +1,4 @@
+
 import avatarImage from '../assets/sample-avatar.jpg';
 
 function Header() {
