@@ -1,7 +1,9 @@
+import avatarImage from '../assets/sample-avatar.jpg';
+
 function Header() {
 return <header>
   <div className="left-header">
-    <img src="sample-avatar.jpg" alt="Avatar" />
+    <img src={avatarImage} alt="Avatar" />
     <h2>Brandon Parker</h2>
   </div>
   <div className="right-header">
