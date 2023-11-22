@@ -70,6 +70,7 @@ function School() {
     </div>
   </form>
 </div>
+
 }
 
 export default School;
