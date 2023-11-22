@@ -3,12 +3,26 @@ import { useState } from 'react';
 function Experience() {
 
   const [isActive, setIsActive] = useState(false);
+  const [isActive1, setIsActive1] = useState(false);
 
   const toggleBox = () => {
     setIsActive(!isActive);
+    setIsActive1(false);
   };
 
-  return <div className={`box ${isActive ? 'active' : ''}`}>
+  const toggleBox1 = () => {
+    if (isActive1) {
+      setIsActive1(!isActive1);
+      setIsActive(true); // Add 'active' when 'active1' is removed
+    } else {
+      setIsActive1(!isActive1);
+      setIsActive(false);
+    }
+  };
+
+
+  
+  return <div className={`box ${isActive ? 'active' : ''} ${isActive1 ? 'active1' : ''}`}>
   <form className="experience-form">
     <div className="header1">
       <h2 className="title">Experience</h2>
@@ -27,7 +41,7 @@ function Experience() {
       </div>
     </div>
     <div className="new-div">
-      <button id="new">New</button>
+      <button type="button" id="new" onClick={toggleBox1}>New</button>
     </div>
     <div className="input-div">
       <label htmlFor="cname">Company Name:</label>
@@ -79,7 +93,7 @@ function Experience() {
       />
     </div>
     <div className="buttons">
-      <button className="cancel">Cancel</button>
+      <button type="button" className="cancel" onClick={toggleBox1}>Cancel</button>
       <button className="save" type="submit">
         Save
       </button>

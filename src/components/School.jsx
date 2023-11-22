@@ -3,13 +3,25 @@ import { useState } from 'react';
 function School() {
 
   const [isActive, setIsActive] = useState(false);
+  const [isActive1, setIsActive1] = useState(false);
 
   const toggleBox = () => {
     setIsActive(!isActive);
+    setIsActive1(false);
+  };
+
+  const toggleBox1 = () => {
+    if (isActive1) {
+      setIsActive1(!isActive1);
+      setIsActive(true); // Add 'active' when 'active1' is removed
+    } else {
+      setIsActive1(!isActive1);
+      setIsActive(false);
+    }
   };
 
 
-  return <div className={`box ${isActive ? 'active' : ''} `}>
+  return <div className={`box ${isActive ? 'active' : ''} ${isActive1 ? 'active1' : ''}`}>
   <form className="education-form">
     <div className="header1">
       <h2 className="title">Education</h2>
@@ -40,7 +52,7 @@ function School() {
       </div>
     </div>
     <div className="new-div">
-      <button id="new">New</button>
+      <button type="button" id="new" onClick={toggleBox1}>New</button>
     </div>
     <div className="input-div">
       <label htmlFor="sname">School:</label>
@@ -75,8 +87,8 @@ function School() {
       />
     </div>
     <div className="buttons">
-      <button className="cancel">Cancel</button>
-      <button className="save" type="submit">
+      <button type="button" className="cancel" onClick={toggleBox1}>Cancel</button>
+      <button type="button" className="save">
         Save
       </button>
     </div>
