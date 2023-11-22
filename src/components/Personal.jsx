@@ -12,7 +12,7 @@ function Personal() {
   <form className="personal-form">
     <div className="header1">
       <h2 className="title">Personal Details</h2>
-      <i className="fa-solid fa-chevron-up down" 
+      <i className={`fa-solid fa-chevron-up up ${isActive ? 'rotate' : ''}`} 
          style={{ color: "white" }} 
          onClick={toggleBox}/>
     </div>

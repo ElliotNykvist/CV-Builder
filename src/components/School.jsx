@@ -39,6 +39,7 @@ function School() {
         startDate,
         endDate,
       };
+
       setItems([...items, newItem]);
       setSchoolName('');
       setDegree('');
@@ -59,7 +60,7 @@ function School() {
   <form className="education-form">
     <div className="header1">
       <h2 className="title">Education</h2>
-      <i className="fa-solid fa-chevron-up up" 
+      <i className={`fa-solid fa-chevron-up up ${isActive ? 'rotate' : ''} ${isActive1 ? 'rotate' : ''}`}
          style={{ color: "white" }} 
          onClick={toggleBox} />
     </div>

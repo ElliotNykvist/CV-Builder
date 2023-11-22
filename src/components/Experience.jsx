@@ -10,6 +10,7 @@ function Experience() {
   const [sDate, setStartDate] = useState('');
   const [eDate, setEndDate] = useState('');
   const [elocation, setELocation] = useState('');
+  const [description, setDescription] = useState('');
 
   const toggleBox = () => {
     setIsActive(!isActive);
@@ -31,13 +32,14 @@ function Experience() {
     setIsActive1(!isActive1);
     setIsActive(true);
   
-    if (companyName && position && sDate && eDate && elocation) {
+    if (companyName && position && sDate && eDate && elocation && description) {
       const newItem = {
         companyName,
         position,
         elocation,
         sDate,
         eDate,
+        description,
       };
       setItems([...itemsJob, newItem]);
       setCompanyName('');
@@ -45,6 +47,8 @@ function Experience() {
       setStartDate('');
       setEndDate('');
       setELocation('');
+      setDescription('');
+
     }
   };
 
@@ -54,13 +58,18 @@ function Experience() {
     setItems(updatedItems);
   };
 
+  const editBtn = () => {
+    setIsActive1(!isActive1);
+    setIsActive(false);
+  }
+
 
   
   return <div className={`box ${isActive ? 'active' : ''} ${isActive1 ? 'active1' : ''}`}>
   <form className="experience-form">
     <div className="header1">
       <h2 className="title">Experience</h2>
-      <i className="fa-solid fa-chevron-up up"
+      <i className= {`fa-solid fa-chevron-up up ${isActive ? 'rotate' : ''} ${isActive1 ? 'rotate' : ''}`}
          style={{ color: "white" }}
          onClick={toggleBox}/>
     </div>
@@ -72,7 +81,7 @@ function Experience() {
             <p>{item.sDate} - {item.eDate}</p>
           </div>
           <div className="btn">
-            <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} />
+            <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} onClick={editBtn}/>
             <i className="fa-solid fa-trash-can" style={{ color: "#d60101" }} onClick={deleteBtn} />
           </div>
         </div>
@@ -154,7 +163,8 @@ function Experience() {
         name="description"
         cols={30}
         rows={10}
-        defaultValue={""}
+        value={description}
+        onChange={(e) => setDescription(e.target.value)} 
       />
     </div>
     <div className="buttons">
