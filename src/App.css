@@ -297,6 +297,7 @@ button:active {
 
 .edu-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
 }
@@ -314,6 +315,13 @@ button:active {
 .cv-title h1 {
   margin: 0;
   font-size: 1.5rem;
+}
+
+.school-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
 
 .school-date h3 {
@@ -420,4 +428,9 @@ button:active {
 
 .active .add-img {
   display: flex;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
 }

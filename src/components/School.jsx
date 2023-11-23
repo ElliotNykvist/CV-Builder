@@ -1,15 +1,17 @@
 import { useState } from 'react';
+import { useContext } from 'react';
+import { EducationContext } from './EducationContext';
 
 function School() {
 
   const [isActive, setIsActive] = useState(false);
   const [isActive1, setIsActive1] = useState(false);
-  const [items, setItems] = useState([]);
   const [schoolName, setSchoolName] = useState('');
   const [degree, setDegree] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
+  const { educationItems, setEducationItems } = useContext(EducationContext);
 
   const toggleBox = () => {
     setIsActive(!isActive);
@@ -40,7 +42,8 @@ function School() {
         endDate,
       };
 
-      setItems([...items, newItem]);
+      setEducationItems([...educationItems, newItem]);
+      // Clearing the input fields
       setSchoolName('');
       setDegree('');
       setStartDate('');
@@ -50,11 +53,10 @@ function School() {
   };
 
   const deleteBtn = (index) => {
-    const updatedItems = [...items];
+    const updatedItems = [...educationItems];
     updatedItems.splice(index, 1);
-    setItems(updatedItems);
+    setEducationItems(updatedItems);
   };
-
 
   return <div className={`box ${isActive ? 'active' : ''} ${isActive1 ? 'active1' : ''}`}>
   <form className="education-form">
@@ -65,7 +67,7 @@ function School() {
          onClick={toggleBox} />
     </div>
     <div className="input-container">
-      {items.map((item, index) => (
+      {educationItems.map((item, index) => (
         <div className="input" key={index}>
           <div>
             <h3>{item.schoolName}</h3>
@@ -154,7 +156,6 @@ function School() {
     </div>
   </form>
 </div>
-
 }
 
 export default School;

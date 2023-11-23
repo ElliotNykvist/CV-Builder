@@ -1,16 +1,18 @@
 import { useState } from 'react';
+import { useContext } from 'react';
+import { ExperienceContext } from './ExperienceContext';
 
 function Experience() {
 
   const [isActive, setIsActive] = useState(false);
   const [isActive1, setIsActive1] = useState(false);
-  const [itemsJob, setItems] = useState([]);
   const [companyName, setCompanyName] = useState('');
   const [position, setPosition] = useState('');
   const [sDate, setStartDate] = useState('');
   const [eDate, setEndDate] = useState('');
   const [elocation, setELocation] = useState('');
   const [description, setDescription] = useState('');
+  const { ExperienceItems, setExperienceItems } = useContext(ExperienceContext);
 
   const toggleBox = () => {
     setIsActive(!isActive);
@@ -41,7 +43,7 @@ function Experience() {
         eDate,
         description,
       };
-      setItems([...itemsJob, newItem]);
+      setExperienceItems([...ExperienceItems, newItem]);
       setCompanyName('');
       setPosition('');
       setStartDate('');
@@ -53,9 +55,9 @@ function Experience() {
   };
 
   const deleteBtn = (index) => {
-    const updatedItems = [...itemsJob];
+    const updatedItems = [...ExperienceItems];
     updatedItems.splice(index, 1);
-    setItems(updatedItems);
+    setExperienceItems(updatedItems);
   };
 
   const editBtn = () => {
@@ -74,7 +76,7 @@ function Experience() {
          onClick={toggleBox}/>
     </div>
     <div className="input-container">
-    {itemsJob.map((item, index) => (
+    {ExperienceItems.map((item, index) => (
         <div className="input" key={index}>
           <div>
             <h3>{item.companyName}</h3>
