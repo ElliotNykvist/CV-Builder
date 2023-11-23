@@ -1,18 +1,24 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { UserInfoContext } from './UserInfoContext'; // Make sure the path is correct
 
 function Personal() {
-
   const [isActive, setIsActive] = useState(true);
+  const { userInfo, setUserInfo } = useContext(UserInfoContext); // Using context
 
   const toggleBox = () => {
     setIsActive(!isActive);
+  };
+
+  const handleChange = (e) => {
+    // Update context state based on input name and value
+    setUserInfo(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
   };
 
   return <div className={`box ${isActive ? 'active' : ''}`}>
   <form className="personal-form">
     <div className="header1">
       <h2 className="title">Personal Details</h2>
-      <i className={`fa-solid fa-chevron-up up ${isActive ? 'rotate' : ''}`} 
+      <i className="fa-solid fa-chevron-up down" 
          style={{ color: "white" }} 
          onClick={toggleBox}/>
     </div>
@@ -23,7 +29,8 @@ function Personal() {
         type="text"
         id="fname"
         name="fname"
-        defaultValue="Otto Robinson"
+        defaultValue={userInfo.fname} // Using context value
+        onChange={handleChange} // Setting up change handler
       />
     </div>
     <div className="input-div1">
@@ -33,7 +40,8 @@ function Personal() {
         type="email"
         id="email"
         name="email"
-        defaultValue="example@gmail.com"
+        defaultValue={userInfo.email} // Using context value
+        onChange={handleChange} // Setting up change handler
       />
     </div>
     <div className="input-div1">
@@ -43,7 +51,8 @@ function Personal() {
         type="tel"
         id="tel"
         name="tel"
-        defaultValue="+44 3560 5566 5566"
+        defaultValue={userInfo.phone} // Using context value
+        onChange={handleChange} // Setting up change handler
       />
     </div>
     <div className="input-div1">
@@ -53,7 +62,8 @@ function Personal() {
         type="text"
         id="address"
         name="address"
-        defaultValue="London, UK"
+        defaultValue={userInfo.address} // Using context value
+        onChange={handleChange} // Setting up change handler
       />
     </div>
     <button className="add-img">Add Img</button>

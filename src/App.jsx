@@ -1,4 +1,5 @@
 import './App.css';
+import { UserInfoProvider } from './components/UserInfoContext';
 import Settings from './components/Settings';
 import Personal from './components/Personal';
 import School from './components/School';
@@ -9,7 +10,7 @@ import Job from './components/Job'
 
 function App() {
   return (
-    <>
+    <UserInfoProvider>
       <div className="container">
         <div className="box-border">
           <Settings/>
@@ -25,7 +26,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </UserInfoProvider>
   )
 }
 
