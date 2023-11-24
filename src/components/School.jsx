@@ -12,6 +12,8 @@ function School() {
   const [endDate, setEndDate] = useState('');
   const [location, setLocation] = useState('');
   const { educationItems, setEducationItems } = useContext(EducationContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
 
   const toggleBox = () => {
     setIsActive(!isActive);
@@ -37,18 +39,30 @@ function School() {
       const newItem = {
         schoolName,
         degree,
-        location,
         startDate,
         endDate,
+        location,
       };
 
-      setEducationItems([...educationItems, newItem]);
+
+      let updatedItems = [...educationItems];
+      if (isEditing) {
+        // Update the existing item
+        updatedItems[editIndex] = newItem;
+      } else {
+        // Add a new item
+        updatedItems = [...updatedItems, newItem];
+      }
+
+      setEducationItems(updatedItems);
       // Clearing the input fields
       setSchoolName('');
       setDegree('');
       setStartDate('');
       setEndDate('');
       setLocation('');
+      setIsEditing(false);
+      setEditIndex(null);
     }
   };
 
@@ -56,7 +70,30 @@ function School() {
     const updatedItems = [...educationItems];
     updatedItems.splice(index, 1);
     setEducationItems(updatedItems);
-  };
+  
+    if (index === editIndex) {
+      // Reset edit state if the edited item is deleted
+      setIsEditing(false);
+      setEditIndex(null);
+    }
+  }
+
+  const editBtn = (index) => {
+
+    const item = educationItems[index];
+    setSchoolName(item.schoolName);
+    setDegree(item.degree);
+    setStartDate(item.startDate);
+    setEndDate(item.endDate);
+    setLocation(item.location);
+
+    setIsEditing(true);
+    setEditIndex(index);
+
+    setIsActive1(true);
+    setIsActive(false);
+
+}
 
   return <div className={`box ${isActive ? 'active' : ''} ${isActive1 ? 'active1' : ''}`}>
   <form className="education-form">
@@ -74,21 +111,11 @@ function School() {
             <p>{item.startDate} - {item.endDate}</p>
           </div>
           <div className="btn">
-            <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} />
+            <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} onClick={() => editBtn(index)} />
             <i className="fa-solid fa-trash-can" style={{ color: "#d60101" }} onClick={deleteBtn} />
           </div>
         </div>
       ))}
-      <div className="input">
-        <div>
-          <h3>London City University</h3>
-          <p>08/2020 - Present</p>
-        </div>
-        <div className="btn">
-          <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} />
-          <i className="fa-solid fa-trash-can" style={{ color: "#d60101" }} />
-        </div>
-      </div>
     </div>
     <div className="new-div">
       <button type="button" id="new" onClick={toggleBox1}>New</button>
@@ -102,6 +129,7 @@ function School() {
         name="sname" 
         value={schoolName}
         onChange={(e) => setSchoolName(e.target.value)}
+        required
       />
     </div>
     <div className="input-div">
@@ -113,27 +141,30 @@ function School() {
         name="degree"
         value={degree}
         onChange={(e) => setDegree(e.target.value)}
+        required
       />
     </div>
     <div className="date-div">
       <div className="input-div">
         <label htmlFor="sdate">Start Date:</label>
         <input 
-          type="date" 
+          type="month" 
           id="sdate" 
           name="sdate" 
           value={startDate}
           onChange={(e) => setStartDate(e.target.value)}
+          required
         />
       </div>
       <div className="input-div">
         <label htmlFor="edate">End Date:</label>
         <input 
-          type="date" 
+          type="month" 
           id="edate" 
           name="edate" 
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
+          required
         />
       </div>
     </div>
@@ -146,6 +177,7 @@ function School() {
         name="slocation"
         value={location}
         onChange={(e) => setLocation(e.target.value)}
+        required
       />
     </div>
     <div className="buttons">

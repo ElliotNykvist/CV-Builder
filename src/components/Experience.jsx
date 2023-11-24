@@ -13,6 +13,8 @@ function Experience() {
   const [elocation, setELocation] = useState('');
   const [description, setDescription] = useState('');
   const { ExperienceItems, setExperienceItems } = useContext(ExperienceContext);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editIndex, setEditIndex] = useState(null);
 
   const toggleBox = () => {
     setIsActive(!isActive);
@@ -30,9 +32,6 @@ function Experience() {
   };
 
   const handleSave = () => {
-
-    setIsActive1(!isActive1);
-    setIsActive(true);
   
     if (companyName && position && sDate && eDate && elocation && description) {
       const newItem = {
@@ -43,26 +42,63 @@ function Experience() {
         eDate,
         description,
       };
-      setExperienceItems([...ExperienceItems, newItem]);
+
+      let updatedItems = [...ExperienceItems];
+    if (isEditing) {
+      // Update the existing item
+      updatedItems[editIndex] = newItem;
+    } else {
+      // Add a new item
+      updatedItems = [...updatedItems, newItem];
+    }
+
+
+      setExperienceItems(updatedItems);
       setCompanyName('');
       setPosition('');
       setStartDate('');
       setEndDate('');
       setELocation('');
       setDescription('');
+      setIsEditing(false);
+      setEditIndex(null);
 
     }
+
+    setIsActive1(false);
+    setIsActive(true);
   };
 
   const deleteBtn = (index) => {
     const updatedItems = [...ExperienceItems];
     updatedItems.splice(index, 1);
     setExperienceItems(updatedItems);
+  
+    if (index === editIndex) {
+      // Reset edit state if the edited item is deleted
+      setIsEditing(false);
+      setEditIndex(null);
+    }
   };
 
-  const editBtn = () => {
-    setIsActive1(!isActive1);
-    setIsActive(false);
+  const editBtn = (index) => {
+
+    const item = ExperienceItems[index];
+      setCompanyName(item.companyName);
+      setPosition(item.position);
+      setStartDate(item.sDate);
+      setEndDate(item.eDate);
+      setELocation(item.elocation);
+      setDescription(item.description);
+
+    
+      setIsEditing(true);
+      setEditIndex(index);
+
+      setIsActive1(true);
+      setIsActive(false);
+
+    
   }
 
 
@@ -83,21 +119,11 @@ function Experience() {
             <p>{item.sDate} - {item.eDate}</p>
           </div>
           <div className="btn">
-            <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} onClick={editBtn}/>
+          <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} onClick={() => editBtn(index)} />
             <i className="fa-solid fa-trash-can" style={{ color: "#d60101" }} onClick={deleteBtn} />
           </div>
         </div>
       ))}
-      <div className="input">
-        <div>
-          <h3>Microsoft</h3>
-          <p>08/2020 - Present</p>
-        </div>
-        <div className="btn">
-          <i className="fa-solid fa-pen-to-square" style={{ color: "white" }} />
-          <i className="fa-solid fa-trash-can" style={{ color: "#d60101" }} />
-        </div>
-      </div>
     </div>
     <div className="new-div">
       <button type="button" id="new" onClick={toggleBox1}>New</button>
@@ -128,7 +154,7 @@ function Experience() {
       <div className="input-div">
         <label htmlFor="sdate">Start Date:</label>
         <input 
-          type="date" 
+          type="month" 
           id="sdate" 
           name="sdate"
           value={sDate}
@@ -138,7 +164,7 @@ function Experience() {
       <div className="input-div">
         <label htmlFor="edate">End Date:</label>
         <input 
-        type="date" 
+        type="month" 
         id="edate" 
         name="edate" 
         value={eDate}

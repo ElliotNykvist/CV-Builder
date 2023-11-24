@@ -6,7 +6,7 @@ export const UserInfoProvider = ({ children }) => {
   const [userInfo, setUserInfo] = useState({
     fname: 'Brandon Parker',
     email: 'example@gmail.com',
-    tel: '+44 3560 5566 5566',
+    tel: '44 3560 5566 5566',
     address: 'London, UK',
   });
 

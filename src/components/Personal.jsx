@@ -51,7 +51,8 @@ function Personal() {
         type="tel"
         id="tel"
         name="tel"
-        defaultValue={userInfo.phone} // Using context value
+        pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+        defaultValue={userInfo.tel} // Using context value
         onChange={handleChange} // Setting up change handler
       />
     </div>

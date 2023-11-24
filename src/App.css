@@ -31,6 +31,7 @@ body {
   width: 25vw;
   background-color: rgb(25,30,43) ;
   margin-right: 40px;
+  margin-bottom: 20px;
   margin-left: 100px;
   border-bottom: solid 2px rgb(240, 240, 240);
   max-height: 20px;
@@ -320,7 +321,6 @@ button:active {
 .school-date {
   display: flex;
   flex-direction: column;
-  align-items: center;
 
 }
 
@@ -433,4 +433,8 @@ button:active {
 .experience-item {
   display: flex;
   justify-content: space-between;
+}
+
+input[type="month"] {
+  padding-top: 10px;
 }
