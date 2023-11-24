@@ -10,8 +10,20 @@ function Personal() {
   };
 
   const handleChange = (e) => {
-    // Update context state based on input name and value
-    setUserInfo(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+    if (e.target.name === 'file') {
+      // Handle file input change for avatar
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setUserInfo(prevState => ({ ...prevState, avatar: reader.result }));
+        };
+        reader.readAsDataURL(file);
+      }
+    } else {
+      // Handle other input changes
+      setUserInfo(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+    }
   };
 
   return <div className={`box ${isActive ? 'active' : ''}`}>
@@ -67,7 +79,15 @@ function Personal() {
         onChange={handleChange} // Setting up change handler
       />
     </div>
-    <button className="add-img">Add Img</button>
+    <button type="button" className="add-img" onClick={() => document.getElementById('file').click()}>
+  Add Img
+</button>
+<input type="file" 
+       name="file" 
+       id="file" 
+       onChange={handleChange} 
+       style={{ display: 'none' }} />
+
   </form>
 </div>
 

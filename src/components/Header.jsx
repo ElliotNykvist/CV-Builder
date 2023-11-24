@@ -1,5 +1,3 @@
-
-import avatarImage from '../assets/sample-avatar.jpg';
 import { useContext } from 'react';
 import { UserInfoContext } from './UserInfoContext';
 
@@ -8,7 +6,7 @@ function Header() {
 
 return <header>
   <div className="left-header">
-    <img src={avatarImage} alt="Avatar" />
+    <img src={userInfo.avatar} alt="Avatar" />
     <h2>{userInfo.fname}</h2>
   </div>
   <div className="right-header">
